@@ -1,0 +1,23 @@
+{"animals": [
+    {
+        "id": 1,
+        "typeAnimal": "Perro",
+        "nameAnimal": "Icaro"
+    },
+    {
+        "id": 2,
+        "typeAnimal": "Pajaro",
+        "nameAnimal": "Cantor"
+    
+    },
+    {
+        "id": 3,
+        "typeAnimal": "Gato",
+        "nameAnimal": "Michigan"
+    },
+    {
+        "id": 4,
+        "typeAnimal": "Camello",
+        "nameAnimal": "Tobias"
+    }
+]}
