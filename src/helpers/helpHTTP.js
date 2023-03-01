@@ -16,15 +16,14 @@ export const HelperHTTP = () => {
         options.body = JSON.stringify(options.body) || false;
         if (!options.body) delete options.body
 
-        console.log(options);
         setTimeout(() => { controller.abort() }, 2000);
 
         return fetch(endpoint, options)
             .then((response) => response.ok ?
-                response.json() 
+                response.json()
                 : Promise.reject(
                     {
-                        error:true,
+                        error: true,
                         status: response.status || "00",
                         statusText: response.statusText || "Ups!, ¡Ocurrio un error inesperado!",
                     }
@@ -33,14 +32,20 @@ export const HelperHTTP = () => {
 
     }
 
-    const get = (url, options = {}) => customFetch(url,options);
+    const get = (url, options = {}) => customFetch(url, options);
 
-    const post = (url, options = {}) => { 
+    const post = (url, options = {}) => {
         options.method = "POST";
-        return customFetct(url,options);
+        return customFetct(url, options);
     }
-    const put = () => { }
-    const del = () => { }
+    const put = () => {
+        options.method = "PUT";
+        return customFetct(url, options);
+    }
+    const del = () => {
+        options.method = "DELETE";
+        return customFetct(url, options);
+    }
 
     return {
         get,

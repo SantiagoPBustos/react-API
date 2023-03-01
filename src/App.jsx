@@ -1,11 +1,11 @@
 import './App.css'
-import AppCRUD from './components/AppCRUD';
+import APICrud from './components/CRUDAPI';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
-      <AppCRUD />
+      <APICrud/>
     </>
   )
 }
