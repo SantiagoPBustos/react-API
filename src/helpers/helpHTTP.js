@@ -33,8 +33,12 @@ export const HelperHTTP = () => {
 
     }
 
-    const get = () => { }
-    const post = () => { }
+    const get = (url, options = {}) => customFetch(url,options);
+
+    const post = (url, options = {}) => { 
+        options.method = "POST";
+        return customFetct(url,options);
+    }
     const put = () => { }
     const del = () => { }
 
