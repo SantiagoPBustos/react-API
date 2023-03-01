@@ -11,8 +11,8 @@ function TableCRUD({ data, setDataToEdit, deleteData }) {
                     <tr>
                         <th>Tipo</th>
                         <th>Nombre</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
