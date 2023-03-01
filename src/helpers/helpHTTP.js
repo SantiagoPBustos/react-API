@@ -16,7 +16,7 @@ export const HelperHTTP = () => {
         options.body = JSON.stringify(options.body) || false;
         if (!options.body) delete options.body
 
-        setTimeout(() => { controller.abort() }, 2000);
+        setTimeout(() => { controller.abort() }, 3000);
 
         return fetch(endpoint, options)
             .then((response) => response.ok ?
