@@ -20,7 +20,15 @@ export const HelperHTTP = () => {
         setTimeout(() => { controller.abort() }, 2000);
 
         return fetch(endpoint, options)
-            .then((response) => response.ok ? response.json() : Promise.reject({}))
+            .then((response) => response.ok ?
+                response.json() 
+                : Promise.reject(
+                    {
+                        error:true,
+                        status: response.status || "00",
+                        statusText: response.statusText || "Ups!, ¡Ocurrio un error inesperado!",
+                    }
+                ))
             .catch((error) => error);
 
     }
