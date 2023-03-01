@@ -8,16 +8,20 @@ export const HelperHTTP = () => {
         options.signal = controller.signal;
 
         options.method = options.method || "GET";
-        options.headers = options.headers ? { 
-            ...defaultHeader, 
-            ...options.headers 
+        options.headers = options.headers ? {
+            ...defaultHeader,
+            ...options.headers
         } : defaultHeader;
 
         options.body = JSON.stringify(options.body) || false;
-        if(!options.body) delete options.body
+        if (!options.body) delete options.body
 
         console.log(options);
         setTimeout(() => { controller.abort() }, 2000);
+
+        return fetch(endpoint, options)
+            .then((response) => response.ok ? response.json() : Promise.reject({}))
+            .catch((error) => error);
 
     }
 
