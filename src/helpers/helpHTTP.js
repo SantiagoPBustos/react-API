@@ -17,6 +17,7 @@ export const HelperHTTP = () => {
         if(!options.body) delete options.body
 
         console.log(options);
+        setTimeout(() => { controller.abort() }, 2000);
 
     }
 
