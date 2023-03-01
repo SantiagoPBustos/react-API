@@ -5,6 +5,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
 
+const intialDB = [
+    
+]
+
 const AppCRUD = () => {
     const [dataBase, setDataBase] = useState(intialDB);
     const [dataToEdit, setDataToEdit] = useState(null);
