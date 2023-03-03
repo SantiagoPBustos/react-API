@@ -36,15 +36,15 @@ export const HelperHTTP = () => {
 
     const post = (url, options = {}) => {
         options.method = "POST";
-        return customFetct(url, options);
-    }
+        return customFetch(url, options);
+    };
     const put = () => {
         options.method = "PUT";
-        return customFetct(url, options);
+        return customFetch(url, options);
     }
     const del = () => {
         options.method = "DELETE";
-        return customFetct(url, options);
+        return customFetch(url, options);
     }
 
     return {

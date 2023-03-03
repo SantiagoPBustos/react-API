@@ -19,7 +19,7 @@ const APICrud = () => {
     let api = HelperHTTP();
 
     useEffect(() => {
-        api.get(url)
+        HelperHTTP().get(url)
             .then(response => {
                 if (!response.error) {
                     setDataBase(response);
@@ -34,7 +34,19 @@ const APICrud = () => {
 
     const createData = (data) => {
         data.id = Date.now();
-        setDataBase([...dataBase, data]);
+
+        let options = {
+            body: data,
+            headers: {"content-type":"application/json"},
+        }
+        console.log(data);
+        api.post(url, options).then(response => {
+            if (!response.error) {
+                setDataBase(...dataBase, response);
+            } else {
+                setError(response);
+            }
+        });
     }
     const updateData = (data) => {
         let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
