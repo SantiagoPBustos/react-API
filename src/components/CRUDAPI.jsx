@@ -9,7 +9,7 @@ import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
 
 const APICrud = () => {
-    const [dataBase, setDataBase] = useState([]);
+    const [dataBase, setDataBase] = useState(null);
     const [dataToEdit, setDataToEdit] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
@@ -55,20 +55,29 @@ const APICrud = () => {
 
                 </Row>
                 <Row>
-                    <Col><FormCRUD
+                    <Col>
+
+                    <FormCRUD
                         createData={createData}
                         updateData={updateData}
                         dataToEdit={dataToEdit}
-                        setDataToEdit={setDataToEdit}
-                    /></Col>
+                        setDataToEdit={setDataToEdit}/>
+                    
+                    </Col>
 
-                    <Col xs={7}><TableCRUD
+                    {loading && <Loader/>}
+
+                    {error && <ErrorMessage/>}
+
+                    <Col xs={7}>
+                        {dataBase && 
+                        <TableCRUD
                         data={dataBase}
                         setDataToEdit={setDataToEdit}
-                        deleteData={deleteData} /></Col>
+                        deleteData={deleteData}/>}
+                        
+                    </Col>
                 </Row>
-                <Loader/>
-                <ErrorMessage/>  
             </Container>
         </>
     );
