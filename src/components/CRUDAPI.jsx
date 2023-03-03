@@ -18,19 +18,19 @@ const APICrud = () => {
 
     let api = HelperHTTP();
 
-    useEffect(()=>{
+    useEffect(() => {
         api.get(url)
-        .then(response => {
-            if (!response.error) {
-                setDataBase(response);
-                setError(null);
-            }else{
-                setDataBase(null);
-                setError(response);
-            }
-            setLoading(false);
-        })
-    },[]);
+            .then(response => {
+                if (!response.error) {
+                    setDataBase(response);
+                    setError(null);
+                } else {
+                    setDataBase(null);
+                    setError(response);
+                }
+                setLoading(false);
+            })
+    }, []);
 
     const createData = (data) => {
         data.id = Date.now();
@@ -40,13 +40,13 @@ const APICrud = () => {
         let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
         setDataBase(dataUpdated);
     }
-    const deleteData = (id) => { 
+    const deleteData = (id) => {
         let isDelete = confirm(`Sure that u want delete this data whit ${id}?`);
 
         if (isDelete) {
             let newData = dataBase.filter(el => el.id !== id);
             setDataBase(newData);
-        }else{
+        } else {
             return;
         }
     }
@@ -59,26 +59,24 @@ const APICrud = () => {
                 </Row>
                 <Row>
                     <Col>
-
-                    <FormCRUD
-                        createData={createData}
-                        updateData={updateData}
-                        dataToEdit={dataToEdit}
-                        setDataToEdit={setDataToEdit}/>
-                    
+                        <FormCRUD
+                            createData={createData}
+                            updateData={updateData}
+                            dataToEdit={dataToEdit}
+                            setDataToEdit={setDataToEdit} />
                     </Col>
 
-                    {loading && <Loader/>}
+                    {loading && <Col><Loader /></Col>}
 
-                    {error && <ErrorMessage/>}
+                    {error && <Col><ErrorMessage msg={`Error ${error.status}: ${error.statusText}`}
+                        bgColor="#dc3545" /></Col>}
 
                     <Col xs={7}>
-                        {dataBase && 
-                        <TableCRUD
-                        data={dataBase}
-                        setDataToEdit={setDataToEdit}
-                        deleteData={deleteData}/>}
-                        
+                        {dataBase &&
+                            <TableCRUD
+                                data={dataBase}
+                                setDataToEdit={setDataToEdit}
+                                deleteData={deleteData} />}
                     </Col>
                 </Row>
             </Container>

@@ -1,10 +1,9 @@
 import React from 'react'
+import './Loader.css';
 
 const Loader = () => {
   return (
-    <div>
-        <h3>Loader</h3>
-    </div>
+    <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div></div>
   )
 }
 
