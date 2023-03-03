@@ -11,16 +11,24 @@ function TableCRUD({ data, setDataToEdit, deleteData }) {
                     <tr>
                         <th>Tipo</th>
                         <th>Nombre</th>
-                        <th></th>
-                        <th></th>
+                        <th colSpan="2">Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((el) => <RowTableCRUD key={el.id} 
-                    el={el} 
-                    setDataToEdit={setDataToEdit} 
-                    deleteData={deleteData} 
-                    />)}
+                    {data.length > 0 ? (
+                        data.map((el) => (
+                            <RowTableCRUD key={el.id}
+                                el={el}
+                                setDataToEdit={setDataToEdit}
+                                deleteData={deleteData}
+                            />
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="4">Sin datos</td>
+                        </tr>
+                    )}
                 </tbody>
             </Table>
         </>

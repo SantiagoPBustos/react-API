@@ -12,7 +12,7 @@ const APICrud = () => {
     const [dataBase, setDataBase] = useState(null);
     const [dataToEdit, setDataToEdit] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     let url = "http://localhost:3000/animals";
 
@@ -23,9 +23,12 @@ const APICrud = () => {
         .then(response => {
             if (!response.error) {
                 setDataBase(response);
+                setError(null);
             }else{
-                setDataBase([])
+                setDataBase(null);
+                setError(response);
             }
+            setLoading(false);
         })
     },[]);
 
