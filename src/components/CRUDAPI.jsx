@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { HelperHTTP } from '../helpers/helpHTTP';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 const APICrud = () => {
     const [dataBase, setDataBase] = useState([]);
@@ -63,6 +65,8 @@ const APICrud = () => {
                         setDataToEdit={setDataToEdit}
                         deleteData={deleteData} /></Col>
                 </Row>
+                <Loader/>
+                <ErrorMessage/>  
             </Container>
         </>
     );
