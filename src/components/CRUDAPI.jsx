@@ -11,6 +11,8 @@ import ErrorMessage from './ErrorMessage';
 const APICrud = () => {
     const [dataBase, setDataBase] = useState([]);
     const [dataToEdit, setDataToEdit] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(null);
 
     let url = "http://localhost:3000/animals";
 
