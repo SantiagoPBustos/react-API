@@ -19,7 +19,7 @@ const APICrud = () => {
     let api = HelperHTTP();
 
     useEffect(() => {
-        HelperHTTP().get(url)
+        api.get(url)
             .then(response => {
                 if (!response.error) {
                     setDataBase(response);
@@ -37,9 +37,8 @@ const APICrud = () => {
 
         let options = {
             body: data,
-            headers: {"content-type":"application/json"},
+            headers: { "content-type": "application/json" },
         }
-        console.log(data);
         api.post(url, options).then(response => {
             if (!response.error) {
                 setDataBase(...dataBase, response);
@@ -49,8 +48,20 @@ const APICrud = () => {
         });
     }
     const updateData = (data) => {
-        let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
-        setDataBase(dataUpdated);
+        let endpoint = `${url}/${data.id}`
+        
+        let options = {
+            body: data,
+            headers: { "content-type": "application/json" },
+        }
+        api.post(url, options).then(response => {
+            if (!response.error) {
+                let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
+                setDataBase(dataUpdated);
+            } else {
+                setError(response);
+            }
+        });
     }
     const deleteData = (id) => {
         let isDelete = confirm(`Sure that u want delete this data whit ${id}?`);
