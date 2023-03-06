@@ -76,8 +76,12 @@ const APICrud = () => {
             }
 
             api.del(endpoint,options).then(responde => {
-                let newData = dataBase.filter(el => el.id !== id);
-                setDataBase(newData);
+                if(!responde.error){
+                    let newData = dataBase.filter(el => el.id !== id);
+                    setDataBase(newData);
+                }else{
+                    setError(responde);
+                }
             });
         } else {
             return;
