@@ -38,7 +38,7 @@ export const HelperHTTP = () => {
         options.method = "POST";
         return customFetch(url, options);
     };
-    const put = () => {
+    const put = (url, options = {}) => {
         options.method = "PUT";
         return customFetch(url, options);
     }

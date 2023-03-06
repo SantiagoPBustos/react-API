@@ -54,7 +54,7 @@ const APICrud = () => {
             body: data,
             headers: { "content-type": "application/json" },
         }
-        api.post(url, options).then(response => {
+        api.put(endpoint, options).then(response => {
             if (!response.error) {
                 let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
                 setDataBase(dataUpdated);
