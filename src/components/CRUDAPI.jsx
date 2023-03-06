@@ -54,6 +54,7 @@ const APICrud = () => {
             body: data,
             headers: { "content-type": "application/json" },
         }
+
         api.put(endpoint, options).then(response => {
             if (!response.error) {
                 let dataUpdated = dataBase.map((el) => (el.id === data.id ? data : el));
@@ -67,8 +68,17 @@ const APICrud = () => {
         let isDelete = confirm(`Sure that u want delete this data whit ${id}?`);
 
         if (isDelete) {
-            let newData = dataBase.filter(el => el.id !== id);
-            setDataBase(newData);
+
+            let endpoint = `${url}/${id}`
+
+            let options = {
+                headers: { "content-type": "application/json" },
+            }
+
+            api.del(endpoint,options).then(responde => {
+                let newData = dataBase.filter(el => el.id !== id);
+                setDataBase(newData);
+            });
         } else {
             return;
         }
